@@ -114,11 +114,13 @@ Deploy to any web server that supports PHP
 [MIT](https://choosealicense.com/licenses/mit/)
 
 
+## Authors
+
+- [@kareemalaadwy](https://www.github.com/kareemalaadwy)
+
+  
 ## Contributing
+Contributing is always welcomed
 
-Contributions are always welcome!
 
-See `contributing.md` for ways to get started.
-
-Please adhere to this project's `code of conduct`.
 
