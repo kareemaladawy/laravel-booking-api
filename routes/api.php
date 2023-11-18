@@ -116,11 +116,10 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::as('user.')
         ->prefix('user')
-        ->middleware('canManageBookings')
+        ->middleware('canManageBookings', 'ensureBookingBelongingness')
         ->group(function () {
             Route::apiResource('bookings', BookingController::class)
                 ->except('destroy')
-                ->middleware('ensureBookingBelongingness')
                 ->withTrashed(['index', 'show']);
 
             Route::put('bookings/{booking}/cancel', [BookingController::class, 'cancel'])
