@@ -106,7 +106,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
                                 Route::apiResource(
-                                    'apartments/{apartment}/prices',
+                                    'apartments.prices',
                                     ApartmentPriceController::class
                                 )->middleware('ensurePriecBelongingness');
                             });
