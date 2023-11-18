@@ -91,7 +91,7 @@ class PropertiesTest extends TestCase
 
         $new_order = $photo2->json('1.order') - 1;
 
-        $response = $this->actingAs($owner)->postJson(
+        $response = $this->actingAs($owner)->putJson(
             '/api/v1/owner/properties/' . $property->id . '/photos/' . $photo2->json('1.id') . '/reorder',
             [
                 'new_order' => $new_order

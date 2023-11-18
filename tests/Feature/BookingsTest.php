@@ -151,8 +151,8 @@ class BookingsTest extends TestCase
             'children_guests' => 0,
         ]);
 
-        $response = $this->actingAs($user)->deleteJson('/api/v1/user/bookings/' . $booking1->id);
-        $response->assertStatus(204);
+        $response = $this->actingAs($user)->putJson('/api/v1/user/bookings/' . $booking1->id . '/cancel');
+        $response->assertStatus(200);
 
         $response = $this->actingAs($user)->getJson('/api/v1/user/bookings');
         $response->assertStatus(200);
@@ -165,7 +165,7 @@ class BookingsTest extends TestCase
         $response->assertJsonFragment(['id' => $booking1->id]);
     }
 
-    public function test_user_cannot_delete_other_users_bookings()
+    public function test_user_cannot_cancel_other_users_bookings()
     {
         $user1 = User::factory()->create(['role_id' => Role::USER]);
         $user2 = User::factory()->create(['role_id' => Role::USER]);
@@ -189,7 +189,7 @@ class BookingsTest extends TestCase
             'children_guests' => 0,
         ]);
 
-        $response = $this->actingAs($user1)->deleteJson('/api/v1/user/bookings/' . $booking2->id);
+        $response = $this->actingAs($user1)->putJson('/api/v1/user/bookings/'  . $booking2->id . '/cancel');
         $response->assertStatus(403);
     }
 
@@ -228,6 +228,6 @@ class BookingsTest extends TestCase
             'review_comment' => 'Comment with a good length to be accepted.'
         ];
         $response = $this->actingAs($user1)->putJson('/api/v1/user/bookings/' . $booking->id, $correctData);
-        $response->assertStatus(204);
+        $response->assertStatus(200);
     }
 }

@@ -399,7 +399,7 @@ class PropertySearchTest extends TestCase
             'rating' => 9
         ]);
 
-        $response->assertStatus(204);
+        $response->assertStatus(200);
 
         $booking2 = $this->actingAs($user2)->postJson('/api/v1/user/bookings', [
             'apartment_id' => $apartment1->id,
@@ -415,7 +415,7 @@ class PropertySearchTest extends TestCase
             'rating' => 7
         ]);
 
-        $response->assertStatus(204);
+        $response->assertStatus(200);
 
         $booking3 = $this->actingAs($user3)->postJson('/api/v1/user/bookings', [
             'apartment_id' => $apartment2->id,
@@ -431,7 +431,7 @@ class PropertySearchTest extends TestCase
             'rating' => 7
         ]);
 
-        $response->assertStatus(204);
+        $response->assertStatus(200);
 
         $response = $this->getJson('/api/v1/search?city_id=' . $city->id . '&adults=2&children=1');
         $response->assertStatus(200);
